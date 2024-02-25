@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 export default function ProfilePage() {
   const router = useRouter();
   const [data, setData] = useState("");
+  const [allUsers, setAllUsers] = useState([]);
 
   const onLogout = async () => {
     try {
@@ -23,8 +24,16 @@ export default function ProfilePage() {
   const getUserDetails = async () => {
     const res = await axios.get('/api/users/me')
     console.log(res.data);
-    setData(res.data.data.firstName + " " + res.data.data.lastName + " - " + res.data.data.email);
+    setData(res.data.data._id);
     console.log(data);
+  }
+
+  const getAllUsers = async () => {
+    const res = await axios.get('/api/users/get-all-users')
+    if(res){
+      setAllUsers({...allUsers, ...res});
+    }
+    console.log(res.data);
   }
 
   return (
@@ -41,6 +50,13 @@ export default function ProfilePage() {
             <button
               type="button"
               className="w-[406px] h-[58px] bg-[#2438B8] text-white rounded-md text-xl font-bold tracking-wider"
+              onClick={getAllUsers}
+            >Get all users</button>
+          </div>
+          <div className="w-full text-center m-4">
+            <button
+              type="button"
+              className="w-[406px] h-[58px] bg-[#2438B8] text-white rounded-md text-xl font-bold tracking-wider"
               onClick={getUserDetails}
             >Get Details</button>
           </div>
@@ -51,6 +67,9 @@ export default function ProfilePage() {
               onClick={onLogout}
             >Log out</button>
           </div>
+        </div>
+        <div className="shadow-md">
+          {allUsers.length === 0 ? <div></div> : <div>{allUsers.map((user) => <li key={user}>{user}</li>)}</div>}
         </div>
       </section>
     </>

@@ -12,14 +12,20 @@ export default function SignupPage() {
   const router = useRouter();
 
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
-    confirmPassword: "",
-    contactNumber: "",
+    // confirmPassword: "",
+    phone: "",
     country: "",
     address: "",
+    google_id: "newgoogleid",
+    google_token: "newgoogletoken",
+    insta_url: "newinstagramurl",
+    postal_code: "12345",
+    state: "NewState",
+    twitter_url: "newtwitterurl"
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -36,25 +42,27 @@ export default function SignupPage() {
   };
 
   useEffect(() => {
-    if(user.firstName.length > 0 && user.lastName.length > 0 && user.email.length > 0 && user.password.length > 0 && user.contactNumber.length > 0 && user.country.length > 0 && user.address.length > 0){
+    if(user.first_name.length > 0 && user.last_name.length > 0 && user.email.length > 0 && user.password.length > 0 && user.phone.length > 0 && user.country.length > 0 && user.address.length > 0){
       setButtonDisabled(false);
     }else{
       setButtonDisabled(true);
     }
 
-    if(user.password !== user.confirmPassword){
-      setButtonDisabled(true);
-    }
+    // if(user.password !== user.confirmPassword){
+    //   setButtonDisabled(true);
+    // }
   },[user]);
 
   const onSignUp = async () => {
+    let response;
     try {
-      const response = await axios.post("/api/users/signup", user);
+      response = await axios.post("http:://localhost:3000/api/users/signup", user);
       console.log("Signup Success", response.data);
       router.push("/login");
 
     } catch (error) {
       console.log("could not sign up")
+      console.log(response);
       console.log(error);
     }
   };
@@ -78,18 +86,18 @@ export default function SignupPage() {
             <div className="mt-6">
               <Input
                 type="text"
-                id="firstName"
-                value={user.firstName}
+                id="first_name"
+                value={user.first_name}
                 onChange={(e) =>
-                  setUser({ ...user, firstName: e.target.value })
+                  setUser({ ...user, first_name: e.target.value })
                 }
                 placeholder="First Name"
               />
               <Input
                 type="text"
-                id="lastName"
-                value={user.lastName}
-                onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+                id="last_name"
+                value={user.last_name}
+                onChange={(e) => setUser({ ...user, last_name: e.target.value })}
                 placeholder="Last Name"
               />
               <Input
@@ -115,10 +123,10 @@ export default function SignupPage() {
                   className="pr-8 text-black mx-auto bg-[#ECECEC] w-[406px] h-[58px] text-base font-normal px-4 outline-none rounded-sm placeholder:text-black"
                   type={showConfirmPassword ? "text" : "password"}
                   id="confirmPassword"
-                  value={user.confirmPassword}
-                  onChange={(e) =>
-                    setUser({ ...user, confirmPassword: e.target.value })
-                  }
+                  // value={user.confirmPassword}
+                  // onChange={(e) =>
+                  //   setUser({ ...user, confirmPassword: e.target.value })
+                  // }
                   placeholder="Confirm Password"
                 />
                 <span onClick={toggleShowConfirmPassword} className="absolute top-4 right-[11rem]" >{showConfirmPassword ? <Image src="/show-password.png" alt="Show Password Icon" className="text-blue-700" width="32" height="24" /> : <Image src="/show-password.png" alt="Show Password Icon" width="32" height="24" />}</span>
@@ -127,10 +135,10 @@ export default function SignupPage() {
                 <input
                   className="pl-16 text-black mx-auto bg-[#ECECEC] w-[406px] h-[58px] text-base font-normal px-4 outline-none rounded-sm placeholder:text-black"
                   type="text"
-                  id="contactNumber"
-                  value={user.contactNumber}
+                  id="phone"
+                  value={user.phone}
                   onChange={(e) =>
-                    setUser({ ...user, contactNumber: e.target.value })
+                    setUser({ ...user, phone: e.target.value })
                   }
                   placeholder="+977 Contact Number"
                 />

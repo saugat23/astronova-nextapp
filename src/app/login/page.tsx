@@ -41,7 +41,7 @@ export default function LoginPage({searchParams: { callbackUrl } } : SignInFormP
 
   const onLogin = async () => {
     try {
-      const response = await axios.post("/api/users/login", user);
+      const response = await axios.post("http://localhost:3000/api/users/login", user);
       console.log("Login Success", response.data);
       router.push("/profile");
     } catch (error) {

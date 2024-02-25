@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  firstName: {
+  first_name: {
     type: String,
     required: [true, "Please provide a first name"],
   },
-  lastName: {
+  last_name: {
     type: String,
     required: [true, "Please provide a last name"],
   },
@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a password"],
   },
-  contactNumber: {
+  phone: {
     type: String,
     required: [true, "Please provide a contact number"]
   },
@@ -29,6 +29,24 @@ const userSchema = new mongoose.Schema({
   address: {
     type: String,
     required: [true, "Please provide a address"]
+  },
+  google_id: {
+    type: String,
+  },
+  google_token: {
+    type: String,
+  },
+  insta_url: {
+    type: String,
+  },
+  postal_code: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
+  twitter_url: {
+    type: String,
   },
   forgotPasswordToken: String,
   forgotPasswordTokenExpiry: Date,

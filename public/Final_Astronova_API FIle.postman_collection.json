@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "e2e414f1-8772-4226-899e-65fa86981952",
+		"name": "Final_Astronova_API FIle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28054658",
+		"_collection_link": "https://restless-trinity-831058.postman.co/workspace/My-Workspace~f0540cdc-2b3d-4c2b-8532-cd6646cdd952/collection/28054658-e2e414f1-8772-4226-899e-65fa86981952?action=share&source=collection_link&creator=28054658"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"newCoordinator@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-backend-astronova.vercel.app/api/user/login",
+							"protocol": "https",
+							"host": [
+								"final-backend-astronova",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Donor Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"new.email2@example.com\",\r\n  \"password\": \"newpassword\",\r\n  \"first_name\": \"FirstName 1\",\r\n  \"last_name\": \"LastName\",\r\n  \"phone\": \"1234567890\",\r\n  \"address\": \"New Address\",\r\n  \"google_id\": \"newgoogleid\",\r\n  \"google_token\": \"newgoogletoken\",\r\n  \"insta_url\": \"newinstagramurl\",\r\n  \"postal_code\": \"12345\",\r\n  \"state\": \"NewState\",\r\n  \"country\": \"NewCountry\",\r\n  \"twitter_url\": \"newtwitterurl\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-backend-astronova.vercel.app/api/user/register-donor",
+							"protocol": "https",
+							"host": [
+								"final-backend-astronova",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"register-donor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Donor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "       {\r\n            \"user_id\": 5,\r\n            \"email\": \"test@gmail.com\",\r\n            \"first_name\": \"test\",\r\n            \"last_name\": \"update\",\r\n            \"phone\": \"123455567\",\r\n            \"address\": \"nepal\",\r\n            \"google_id\": \"NA\",\r\n            \"google_token\": null,\r\n            \"insta_url\": \"#insta\",\r\n            \"postal_code\": 482003,\r\n            \"state\": \"MP\",\r\n            \"country\": \"India\",\r\n            \"twitter_url\": \"#twitter\",\r\n            \"role\": \"Donor\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-backend-astronova.vercel.app/api/user/update-donor/5",
+							"protocol": "https",
+							"host": [
+								"final-backend-astronova",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"update-donor",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All USer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-backend-astronova.vercel.app/api/user/get-all-user?page=1&pageSize=15&role=Donor",
+							"protocol": "https",
+							"host": [
+								"final-backend-astronova",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"get-all-user"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "15"
+								},
+								{
+									"key": "role",
+									"value": "Donor"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-backend-astronova.vercel.app/api/user/logout",
+							"protocol": "https",
+							"host": [
+								"final-backend-astronova",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-backend-astronova.vercel.app/api/user/get-user/12",
+							"protocol": "https",
+							"host": [
+								"final-backend-astronova",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"get-user",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Donor profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-backend-astronova.vercel.app/api/user/get-profile",
+							"protocol": "https",
+							"host": [
+								"final-backend-astronova",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"get-profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
