@@ -6,13 +6,13 @@ import { connect } from "@/dbConfig/dbConfig";
 
 connect();
 
-export async function GET(request:NextRequest){
+export async function GET(request: NextRequest){
 
     try {
         // const user = await User.findOne({_id: userId}).select("-password");
         const users = await User.find({});
         return NextResponse.json({
-            mesaaage: "Users found",
+            message: "Users found",
             data: users
         })
     } catch (error:any) {
